@@ -20,4 +20,4 @@ jobs:
 
       - name: "Publish to pub.dev"
         # --force to ignore prerelease warnings about graphql package
-        run: dart pub publish --force --dry-run
+        run: dart pub publish --force
