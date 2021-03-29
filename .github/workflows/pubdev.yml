@@ -18,5 +18,4 @@ jobs:
             | base64 --decode > ~/.pub-cache/credentials.json
 
       - name: "Publish to pub.dev"
-        # --force to ignore prerelease warnings about graphql package
-        run: dart pub publish --force
+        run: dart pub publish
