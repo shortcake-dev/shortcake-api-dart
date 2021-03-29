@@ -2,7 +2,7 @@ name: pubdev
 
 on:
   release:
-    types: [published]
+    types: [ published ]
   pull_request:
 
 jobs:
@@ -10,15 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1
+
       - name: "Install credentials file"
-        # https://docs.github.com/en/actions/reference/encrypted-secrets
-        # "To help ensure that GitHub redacts your secret in logs, avoid using
-        # structured data as the values of secrets. For example, avoid creating
-        # secrets that contain JSON or encoded Git blobs."
         run: |
           mkdir -p ~/.pub-cache
           echo "${{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }}" \
             | base64 --decode > ~/.pub-cache/credentials.json
+
       - name: "Publish to pub.dev"
         # --force to ignore prerelease warnings about graphql package
         run: dart pub publish --force --dry-run
