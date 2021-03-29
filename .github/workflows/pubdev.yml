@@ -10,9 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
-        name: "Publish to pub.dev"
-        with:
-          credential: ${{ secrets.PUBDEV_CREDENTIAL_JSON }}
-          flutter_package: false
-          skip_test: true
+      - name: "Install credentials file"
+        # https://docs.github.com/en/actions/reference/encrypted-secrets
+        # "To help ensure that GitHub redacts your secret in logs, avoid using
+        # structured data as the values of secrets. For example, avoid creating
+        # secrets that contain JSON or encoded Git blobs."
+        run: |
+          mkdir -p ~/.pub-cache
+          echo {{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }} \
+            | base64 -d > ~/.pub-cache/credentials.json
+      - name: "Publish to pub.dev"
+        # --force to ignore prerelease warnings about graphql package
+        run: dart pub publish --force --dry-run
