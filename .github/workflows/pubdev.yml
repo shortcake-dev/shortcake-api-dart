@@ -18,7 +18,7 @@ jobs:
         run: |
           mkdir -p ~/.pub-cache
           echo {{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }} \
-            | base64 -d > ~/.pub-cache/credentials.json
+            | base64 -di > ~/.pub-cache/credentials.json
       - name: "Publish to pub.dev"
         # --force to ignore prerelease warnings about graphql package
         run: dart pub publish --force --dry-run
