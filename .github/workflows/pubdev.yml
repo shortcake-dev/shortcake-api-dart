@@ -17,7 +17,7 @@ jobs:
         # secrets that contain JSON or encoded Git blobs."
         run: |
           mkdir -p ~/.pub-cache
-          echo {{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }} \
+          echo "{{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }}" \
             | base64 -di > ~/.pub-cache/credentials.json
       - name: "Publish to pub.dev"
         # --force to ignore prerelease warnings about graphql package
