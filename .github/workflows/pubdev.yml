@@ -1,0 +1,21 @@
+name: pubdev
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1
+
+      - name: "Install credentials file"
+        run: |
+          mkdir -p ~/.pub-cache
+          echo "${{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }}" \
+            | base64 --decode > ~/.pub-cache/credentials.json
+
+      - name: "Publish to pub.dev"
+        run: dart pub publish

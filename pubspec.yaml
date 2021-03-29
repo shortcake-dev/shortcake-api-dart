@@ -1,13 +1,13 @@
 name: shortcake
 description: 'Shortcake API for Dart'
-version: 0.0.1
+version: 0.0.1-nullsafety
 homepage: https://github.com/shortcake-dev/shortcake-api-dart
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  graphql: ^5.0.0-nullsafety.2
+  graphql: ^5.0.0-nullsafety.3
 
 dev_dependencies:
   pedantic: ^1.9.0
