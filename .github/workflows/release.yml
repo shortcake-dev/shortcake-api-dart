@@ -41,5 +41,8 @@ jobs:
           echo "${{ secrets.PUBDEV_CREDENTIAL_JSON_B64 }}" \
             | base64 --decode > ~/.pub-cache/credentials.json
 
+      - name: "Dry run publish to pub.dev"
+        run: dart pub publish --dry-run
+
       - name: "Publish to pub.dev"
-        run: dart pub publish
+        run: dart pub publish --force
