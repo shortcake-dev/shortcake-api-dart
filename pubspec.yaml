@@ -1,6 +1,6 @@
 name: shortcake
 description: 'Shortcake API for Dart'
-version: 0.0.1-nullsafety
+version: 0.0.2-nullsafety
 homepage: https://github.com/shortcake-dev/shortcake-api-dart
 
 environment:
