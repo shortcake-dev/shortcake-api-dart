@@ -1,9 +1,9 @@
 import 'package:graphql/client.dart';
 
-class ShortcakeClient extends GraphQLClient {
+class ShortcakeApi extends GraphQLClient {
   final String uri;
 
-  ShortcakeClient(this.uri) : super(link: HttpLink(uri), cache: GraphQLCache());
+  ShortcakeApi(this.uri) : super(link: HttpLink(uri), cache: GraphQLCache());
 
   Future<QueryResult> introspect() async {
     const query = r'''
